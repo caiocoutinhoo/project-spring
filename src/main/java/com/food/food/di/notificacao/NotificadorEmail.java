@@ -1,15 +1,15 @@
 package com.food.food.di.notificacao;
 import com.food.food.di.modelo.Cliente;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-
+@Profile("dev")
+@TipoDoNotificador(NivelUrgencia.NORMAL)
+@Component
 public class NotificadorEmail implements Notificador {
 
     private boolean caixaAlta;
-    private String hostServidorSmtp;
-
-    public NotificadorEmail(String hostServidorSmtp) {
-        this.hostServidorSmtp = hostServidorSmtp;
-    }
 
     @Override
     public void notificar(Cliente cliente, String mensagem) {
